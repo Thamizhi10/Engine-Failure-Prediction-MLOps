@@ -16,8 +16,6 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
 import xgboost as xgb
 from xgboost import XGBClassifier
-import GradientBoostingClassifier
-import RandomForestClassifier
 import os
 import joblib
 from huggingface_hub import upload_file
