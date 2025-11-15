@@ -34,10 +34,10 @@ YTRAIN_FILE = "ytrain.csv"
 YTEST_FILE  = "ytest.csv"
 
 # Download files
-xtrain_path = hf_hub_download(repo_id=DATA_REPO_ID, filename=XTRAIN_FILE)
-xtest_path  = hf_hub_download(repo_id=DATA_REPO_ID, filename=XTEST_FILE)
-ytrain_path = hf_hub_download(repo_id=DATA_REPO_ID, filename=YTRAIN_FILE)
-ytest_path  = hf_hub_download(repo_id=DATA_REPO_ID, filename=YTEST_FILE)
+xtrain_path = hf_hub_download(repo_id=DATA_REPO_ID, filename=XTRAIN_FILE, repo_type="dataset")
+xtest_path  = hf_hub_download(repo_id=DATA_REPO_ID, filename=XTEST_FILE, repo_type="dataset")
+ytrain_path = hf_hub_download(repo_id=DATA_REPO_ID, filename=YTRAIN_FILE, repo_type="dataset")
+ytest_path  = hf_hub_download(repo_id=DATA_REPO_ID, filename=YTEST_FILE, repo_type="dataset")
 
 # Read into DataFrames
 X_train = pd.read_csv(xtrain_path)
