@@ -22,9 +22,11 @@ from huggingface_hub import upload_file
 from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 
+login(os.getenv("HF_TOKEN"))
+api = HfApi(token=os.getenv("HF_TOKEN"))
 
 #fetch data
-DATA_REPO_ID = "tam3222/engine_data"   # <-- change if needed
+DATA_REPO_ID = "tam3222/engine_data"   
 
 XTRAIN_FILE = "Xtrain.csv"
 XTEST_FILE  = "Xtest.csv"
