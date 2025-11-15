@@ -85,6 +85,7 @@ files = ["Xtrain.csv", "Xtest.csv", "ytrain.csv", "ytest.csv"]
 
 from huggingface_hub import HfApi, login
 login(os.getenv("HF_TOKEN"))
+api = HfApi(token=os.getenv("HF_TOKEN"))
 
 for file_path in files:
     api.upload_file(

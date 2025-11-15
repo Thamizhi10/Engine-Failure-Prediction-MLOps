@@ -95,7 +95,8 @@ for model_name, (model, params) in models.items():
 #Save & Register the Best Model
 best_model_path = f"best_{best_model_name}.pkl"
 joblib.dump(best_model, best_model_path)
-
+login(os.getenv("HF_TOKEN"))
+api = HfApi(token=os.getenv("HF_TOKEN"))
 upload_file(
     path_or_fileobj=best_model_path,
     path_in_repo=f"models/{best_model_name}.pkl",
