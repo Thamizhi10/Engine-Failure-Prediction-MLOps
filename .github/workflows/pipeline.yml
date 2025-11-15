@@ -31,7 +31,7 @@ jobs:
         run: python engine_project/model_building/prep.py
 
 
-  model-training:
+  model-traning:
     needs: data-prep
     runs-on: ubuntu-latest
     steps:
