@@ -1,13 +1,24 @@
-from datasets import load_dataset
 import pandas as pd
-import os
-import joblib
-from sklearn.model_selection import train_test_split
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from datasets import load_dataset
+from huggingface_hub import HfApi, hf_hub_download, login
+import mlflow
+import mlflow.sklearn
+from pyngrok import ngrok
+from sklearn.model_selection import GridSearchCV, train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
-from huggingface_hub import HfApi
+import xgboost as xgb
+from xgboost import XGBClassifier
+import os
+import joblib
+from huggingface_hub import upload_file
 
 dataset = load_dataset("tam3222/engine_data")
 df = dataset['train'].to_pandas()
@@ -62,7 +73,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 train_data = pd.concat([X_train, y_train], axis=1)
 test_data = pd.concat([X_test, y_test], axis=1)
 
-print(train_data.shape, test_data.shape)
+#print(train_data.shape, test_data.shape)
 
 X_train.to_csv("Xtrain.csv",index=False)
 X_test.to_csv("Xtest.csv",index=False)

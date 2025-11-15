@@ -1,25 +1,29 @@
-# for data manipulation
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from datasets import load_dataset
+from huggingface_hub import HfApi, hf_hub_download, login
+import mlflow
+import mlflow.sklearn
+from pyngrok import ngrok
+from sklearn.model_selection import GridSearchCV, train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.compose import make_column_transformer
-from sklearn.pipeline import make_pipeline
-# for model training, tuning, and evaluation
+from sklearn.impute import SimpleImputer
 import xgboost as xgb
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import RandomizedSearchCV
-from sklearn.metrics import accuracy_score, classification_report, recall_score
+from xgboost import XGBClassifier
 import GradientBoostingClassifier
 import RandomForestClassifier
-import XGBClassifier
-# for model serialization
-import joblib
-# for creating a folder
 import os
-# for hugging face space authentication to upload files
+import joblib
+from huggingface_hub import upload_file
 from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
-import mlflow
+
 
 #fetch data
 DATA_REPO_ID = "tam3222/engine_data"   # <-- change if needed
