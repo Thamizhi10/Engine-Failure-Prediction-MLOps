@@ -2,10 +2,22 @@ pandas==2.2.2
 numpy==1.26.4
 matplotlib==3.8.4
 seaborn==0.13.2
+
+# Hugging Face
 datasets==2.19.1
 huggingface_hub==0.32.6
+
+# MLflow
 mlflow==3.0.1
+
+# ngrok
 pyngrok==7.1.3
+
+# Machine Learning
 scikit-learn==1.6.0
 xgboost==2.1.4
+imbalanced-learn==0.12.3
+
+# Utilities
 joblib==1.5.1
+
