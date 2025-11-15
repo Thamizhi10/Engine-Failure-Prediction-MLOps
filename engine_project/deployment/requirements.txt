@@ -20,4 +20,5 @@ imbalanced-learn==0.12.3
 
 # Utilities
 joblib==1.5.1
+streamlit==1.35.0
 

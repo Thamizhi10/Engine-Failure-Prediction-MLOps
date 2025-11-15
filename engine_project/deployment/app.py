@@ -5,12 +5,14 @@ import joblib
 import os
 
 from huggingface_hub import HfApi, login
-login(os.getenv("HF_TOKEN"))
 
-# Download the model from the Model Hub
+HF_TOKEN = os.getenv("HF_TOKEN")  # Optional if repo is public
+
 model_path = hf_hub_download(
-    repo_id="tam3222/tourism",
-    filename="best_engine_prediction_model_v1.joblib"
+    repo_id="tam3222/Engine_Model",
+    filename="models/RandomForest.pkl",  
+    repo_type="model",
+    token=HF_TOKEN  # can be None for public repos
 )
 
 # Load the model
@@ -22,21 +24,21 @@ st.write("This app predicts the engine condition.")
 st.write("Please enter the customer details below:")
 
 # Collect user input
-Engine_RPM = st.number_input("Engine_RPM", min_value=0, value=700)
-Lub_Oil_Pressure = st.number_input("Pressure of the lubricating oil in the engine(kPa)", min_value=0, value=3)
-Fuel_Pressure = st.number_input("Pressure at which fuel is supplied to the engine(kPa)", min_value=0, value=3)
-Coolant_Pressure = st.number_input("Coolant_Pressure(kPa)", min_value=0, value=2)
-Lub_Oil_Temperature = st.number_input("Temperature of the lubricating oil (°C) ", value=75)
-Coolant_Temperature = st.number_input("Coolant_Temperature (°C)", value=78)
+engine_rpm = st.number_input("Engine_RPM", min_value=0, value=700)
+lub_oil_pressure = st.number_input("Pressure of the lubricating oil in the engine(kPa)", min_value=0, value=3)
+fuel_pressure = st.number_input("Pressure at which fuel is supplied to the engine(kPa)", min_value=0, value=3)
+coolant_pressure = st.number_input("Coolant_Pressure(kPa)", min_value=0, value=2)
+lub_oil_temperature = st.number_input("Temperature of the lubricating oil (°C) ", value=75)
+coolant_temperature = st.number_input("Coolant_Temperature (°C)", value=78)
 
 # Prepare input DataFrame
 input_data = pd.DataFrame([{
-    'Engine_RPM': Engine_RPM,
-    'Lub_Oil_Pressure': Lub_Oil_Pressure,
-    'Fuel_Pressure': Fuel_Pressure,
-    'Coolant_Pressure': Coolant_Pressure,
-    'Lub_Oil_Temperature': Lub_Oil_Temperature,
-    'Coolant_Temperature': Coolant_Temperature,
+    'engine_rpm': engine_rpm,
+    'lub_oil_pressure': lub_oil_pressure,
+    'fuel_pressure': fuel_pressure,
+    'coolant_pressure': coolant_pressure,
+    'lub_oil_temperature': lub_oil_temperature,
+    'coolant_temperature': coolant_temperature,
 }])
 
 # Classification threshold
